@@ -1,20 +1,15 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  Pressable,
-} from "react-native";
-import React, { useEffect, useState } from "react";
-import { Ionicons } from "@expo/vector-icons";
 import AppCard from "@/components/app-card";
-import { theme } from "@/styles/theme";
 import * as api from "@/lib/api";
+import { theme } from "@/styles/theme";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
+//Define state
 const Home = () => {
   const [data, setData] = useState<api.DashboardData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null); //handle error
 
   // reusable fetch function
 
@@ -35,12 +30,12 @@ const Home = () => {
     loadDashboard();
   }, []);
 
-  if(isLoading){
+  if (isLoading) {
     return (
       <View style={styles.centered}>
-        <ActivityIndicator size={"large"} color={theme.colors.primary}/>
+        <ActivityIndicator size={"large"} color={theme.colors.primary} />
       </View>
-    )
+    );
   }
   return (
     <View style={styles.container}>
@@ -84,8 +79,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: theme.spacing.screen,
     backgroundColor: theme.colors.bg,
-    justifyContent:"center",
-    alignItems:"center"
+    justifyContent: "center",
+    alignItems: "center",
   },
   header: {
     fontSize: 28,
